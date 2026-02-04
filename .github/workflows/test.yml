@@ -3,7 +3,7 @@ run-name: Auto format issue using composite action
 
 on:
   issues:
-    types: [opened, edited, labeled]
+    types: [edited]
 
 permissions:
   issues: write
@@ -19,6 +19,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Format issue title
-        uses: ./format-issue-title
+        uses: ./
         with:
           prefix: TEST
