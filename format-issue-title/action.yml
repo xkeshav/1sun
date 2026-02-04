@@ -1,0 +1,23 @@
+name: "Format Issue ID"
+description: "Appends formatted ID to GitHub issue titles"
+author: "xkeshav"
+
+inputs:
+  prefix:
+    description: "Prefix for the identifier (e.g., TZF)"
+    required: true
+    default: "PRO"
+    type: string
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        chmod +x "./format.sh"
+        "./format.sh" \
+          "${{ github.event.issue.number }}" \
+          "${{ github.event.issue.title }}" \
+          "${{ inputs.prefix }}"
