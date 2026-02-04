@@ -16,8 +16,8 @@ runs:
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
-        chmod +x "./format.sh"
-        "./format.sh" \
+        chmod +x "format.sh"
+        "format.sh" \
           "${{ github.event.issue.number }}" \
           "${{ github.event.issue.title }}" \
           "${{ inputs.prefix }}"
