@@ -2,6 +2,10 @@ name: "Format Issue ID"
 description: "Appends formatted ID to GitHub issue titles"
 author: "xkeshav"
 
+branding:
+  icon: "activity"
+  color: "gray-dark"
+
 inputs:
   prefix:
     description: "Prefix for the identifier (e.g., TZF)"
