@@ -86,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Format issue title
-        uses: xkeshav/1sun/format-issue-title@v1
+        uses: xkeshav/1sun@v1.1.2
         with:
           prefix: PRO
 ```
