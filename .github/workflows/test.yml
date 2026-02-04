@@ -1,0 +1,24 @@
+name: "Auto Format Issue Title"
+run-name: Auto format issue using composite action
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+
+permissions:
+  issues: write
+
+concurrency:
+  group: issue-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  format_title:
+    runs-on: ubuntu-latest
+    if: true # Disable this job
+    steps:
+      - uses: actions/checkout@v4
+      - name: Format issue title
+        uses: ./format-issue-title
+        with:
+          prefix: TEST
