@@ -1,5 +1,5 @@
 name: "Format Issue ID"
-description: "Appends formatted ID to GitHub issue titles"
+description: "Appends formatted ID to GitHub issue title"
 author: "xkeshav"
 
 branding:
@@ -17,11 +17,12 @@ runs:
   using: "composite"
   steps:
     - shell: bash
+      id: format_issue
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
         chmod +x "${{ github.action_path }}/format.sh"
         "${{ github.action_path }}/format.sh" \
-          "${{ github.event.issue.number }}" \
-          "${{ github.event.issue.title }}" \
-          "${{ inputs.prefix }}"
+        "${{ github.event.issue.number }}" \
+        "${{ github.event.issue.title }}" \
+        "${{ inputs.prefix }}"

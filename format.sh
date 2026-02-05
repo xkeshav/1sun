@@ -1,14 +1,9 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
-ISSUE_NUMBER=$1
-OLD_TITLE=$2
-PREFIX=$3
-
-# Fallback to default if prefix is empty
-if [ -z "$PREFIX" ]; then
-  PREFIX="GEN"
-fi
+ISSUE_NUMBER="$1"
+OLD_TITLE="$2"
+PREFIX="${3:-GEN}" # fallback if not passed
 
 YEAR=$(date +%y)
 PADDED_NUM=$(printf "%04d" "$ISSUE_NUMBER")
@@ -30,9 +25,8 @@ else
   NEW_TITLE="${IDENTIFIER}${OLD_TITLE}"
 fi
 
-
-# Normalize spacing
-NEW_TITLE=$(echo "$NEW_TITLE" | sed 's/  */ /g' | sed 's/^ *//;s/ *$//')
+# Normalize spacing 
+NEW_TITLE=$(echo "$NEW_TITLE" | sed -E 's/[[:space:]]+/ /g; s/^ | $//g')
 
 echo "New title would be: $NEW_TITLE"
 
