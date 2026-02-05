@@ -19,6 +19,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Format issue title
-        uses: xkeshav/1sun@v1.1.2
+        uses: xkeshav/1sun@v1.1.3
         with:
           prefix: TEST
